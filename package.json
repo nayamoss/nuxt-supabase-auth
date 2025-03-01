@@ -14,5 +14,17 @@
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "@unhead/vue": "^1.11.20",
+    "@vueuse/core": "^12.7.0",
+    "autoprefixer": "^10.4.17",
+    "date-fns": "^4.1.0",
+    "lucide-vue-next": "^0.321.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }

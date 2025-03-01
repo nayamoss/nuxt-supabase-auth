@@ -1,7 +1,15 @@
 export default defineNuxtConfig({
   modules: [
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    '@nuxtjs/tailwindcss'
   ],
+
+  css: ['~/assets/css/main.css'],
+
+  tailwindcss: {
+    configPath: 'tailwind.config.js',
+    viewer: true,
+  },
 
   supabase: {
     redirect: false,

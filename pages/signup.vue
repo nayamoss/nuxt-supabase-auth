@@ -1,31 +1,51 @@
 <template>
-  <div class="signup-container">
+  <div class="card max-w-md mx-auto my-12 p-6">
     <form @submit.prevent="handleSignup">
-      <h2>Sign Up</h2>
-      <div class="form-group">
-        <input v-model="email" type="email" placeholder="Email" required>
-      </div>
-      <div class="form-group">
-        <input v-model="password" type="password" placeholder="Password" required>
-      </div>
-      <button type="submit">Sign Up</button>
-      <p v-if="error" class="error">{{ error }}</p>
-      <div v-if="success" class="success">
-        <p>{{ success }}</p>
-        <div class="info-box">
-          <p><strong>Development Mode Instructions:</strong></p>
-          <ol>
-            <li>Go to your Supabase project dashboard</li>
-            <li>Click on "Authentication" in the sidebar</li>
-            <li>Look for your email in the "Users" list</li>
-            <li>Click on the email to see verification details</li>
-          </ol>
+      <h2 class="text-2xl font-bold mb-6">Sign Up</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="email" class="form-label">Email</label>
+          <input 
+            id="email"
+            v-model="email" 
+            type="email" 
+            class="form-input" 
+            placeholder="Enter your email"
+            required
+          />
         </div>
-        <small>You must verify your email before accessing the dashboard.</small>
+        <div>
+          <label for="password" class="form-label">Password</label>
+          <input 
+            id="password"
+            v-model="password" 
+            type="password" 
+            class="form-input" 
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-full mt-2">Sign Up</button>
+        <p v-if="error" class="form-error mt-2">{{ error }}</p>
+        
+        <div v-if="success" class="mt-4">
+          <p class="form-success">{{ success }}</p>
+          <div class="bg-[#f5f5f5] border border-[#EFEFEF] rounded-md p-4 mt-2">
+            <p class="font-medium">Development Mode Instructions:</p>
+            <ol class="list-decimal ml-5 mt-2 text-sm">
+              <li>Go to your Supabase project dashboard</li>
+              <li>Click on "Authentication" in the sidebar</li>
+              <li>Look for your email in the "Users" list</li>
+              <li>Click on the email to see verification details</li>
+            </ol>
+            <p class="text-xs text-muted-foreground mt-2">You must verify your email before accessing the dashboard.</p>
+          </div>
+        </div>
+        
+        <div class="text-center text-sm mt-4">
+          Already have an account? <NuxtLink to="/login" class="text-primary hover:underline">Login</NuxtLink>
+        </div>
       </div>
-      <p class="links">
-        Already have an account? <NuxtLink to="/login">Login</NuxtLink>
-      </p>
     </form>
   </div>
 </template>
@@ -83,64 +103,4 @@ async function handleSignup() {
     error.value = err.message
   }
 }
-</script>
-
-<style scoped>
-.signup-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-}
-.form-group {
-  margin-bottom: 15px;
-}
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-.error {
-  color: red;
-  margin-top: 10px;
-}
-.success {
-  color: green;
-  margin-top: 10px;
-}
-.info-box {
-  background: #e3f2fd;
-  border: 1px solid #2196F3;
-  border-radius: 4px;
-  padding: 15px;
-  margin: 10px 0;
-  color: #0d47a1;
-}
-.info-box ol {
-  margin: 10px 0 10px 20px;
-  padding: 0;
-}
-.info-box li {
-  margin: 5px 0;
-}
-.success small {
-  display: block;
-  margin-top: 5px;
-  color: #666;
-}
-.links {
-  margin-top: 15px;
-  text-align: center;
-}
-.links a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-</style> 
+</script> 

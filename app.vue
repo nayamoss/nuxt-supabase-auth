@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <nav>
-      <NuxtLink to="/">Home</NuxtLink>
-      <template v-if="!user">
-        <NuxtLink to="/login">Login</NuxtLink>
-        <NuxtLink to="/signup">Sign Up</NuxtLink>
-      </template>
-      <NuxtLink v-else to="/dashboard">Dashboard</NuxtLink>
+  <div class="min-h-screen bg-background">
+    <nav class="p-5 bg-white shadow">
+      <div class="container mx-auto flex flex-wrap items-center">
+        <NuxtLink to="/" class="btn btn-primary mr-3">Home</NuxtLink>
+        <template v-if="!user">
+          <NuxtLink to="/login" class="btn btn-secondary mr-3">Login</NuxtLink>
+          <NuxtLink to="/signup" class="btn btn-secondary mr-3">Sign Up</NuxtLink>
+        </template>
+        <NuxtLink v-else to="/dashboard" class="btn btn-secondary mr-3">Dashboard</NuxtLink>
+      </div>
     </nav>
-    <NuxtPage />
+    <main class="container mx-auto p-5">
+      <NuxtPage />
+    </main>
   </div>
 </template>
 
@@ -17,16 +21,11 @@ const user = useSupabaseUser()
 </script>
 
 <style>
-nav {
-  padding: 20px;
-  background: #f8f9fa;
+.router-link-active.btn-secondary {
+  @apply bg-[#EFEFEF];
 }
-nav a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #333;
-}
-nav a.router-link-active {
-  color: #4CAF50;
+
+.router-link-active.btn-primary {
+  @apply bg-primary/90;
 }
 </style>

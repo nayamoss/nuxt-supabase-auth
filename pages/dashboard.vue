@@ -1,8 +1,10 @@
 <template>
-  <div v-if="isVerified" class="dashboard">
-    <h1>Protected Dashboard</h1>
-    <p>Welcome {{ user?.email }}</p>
-    <button @click="handleLogout">Logout</button>
+  <div v-if="isVerified" class="card max-w-4xl mx-auto my-12 p-8">
+    <h1 class="text-3xl font-bold mb-6">Protected Dashboard</h1>
+    <p class="text-lg mb-8">Welcome {{ user?.email }}</p>
+    <button @click="handleLogout" class="btn btn-secondary">
+      Logout
+    </button>
   </div>
 </template>
 
@@ -39,20 +41,4 @@ async function handleLogout() {
     console.error('Error signing out:', err)
   }
 }
-</script>
-
-<style scoped>
-.dashboard {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-}
-button {
-  padding: 10px 20px;
-  background: #f44336;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
-}
-</style> 
+</script> 

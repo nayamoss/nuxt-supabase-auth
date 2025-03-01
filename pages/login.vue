@@ -1,20 +1,38 @@
 <template>
-  <div class="login-container">
+  <div class="card max-w-md mx-auto my-12 p-6">
     <form @submit.prevent="handleLogin">
-      <h2>Login</h2>
-      <div class="form-group">
-        <input v-model="email" type="email" placeholder="Email" required>
+      <h2 class="text-2xl font-bold mb-6">Login</h2>
+      <div class="space-y-4">
+        <div>
+          <label for="email" class="form-label">Email</label>
+          <input 
+            id="email"
+            v-model="email" 
+            type="email" 
+            class="form-input" 
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div>
+          <label for="password" class="form-label">Password</label>
+          <input 
+            id="password"
+            v-model="password" 
+            type="password" 
+            class="form-input" 
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-full mt-2">Login</button>
+        <p v-if="error" class="form-error mt-2">{{ error }}</p>
+        <p v-if="message" class="text-primary mt-2">{{ message }}</p>
+        <div class="flex justify-between text-sm mt-4">
+          <NuxtLink to="/signup" class="text-primary hover:underline">Create Account</NuxtLink>
+          <NuxtLink to="/reset-password" class="text-primary hover:underline">Forgot Password?</NuxtLink>
+        </div>
       </div>
-      <div class="form-group">
-        <input v-model="password" type="password" placeholder="Password" required>
-      </div>
-      <button type="submit">Login</button>
-      <p v-if="error" class="error">{{ error }}</p>
-      <p v-if="message" class="message">{{ message }}</p>
-      <p class="links">
-        <NuxtLink to="/signup">Create Account</NuxtLink> |
-        <NuxtLink to="/reset-password">Forgot Password?</NuxtLink>
-      </p>
     </form>
   </div>
 </template>
@@ -70,45 +88,4 @@ async function handleLogin() {
     error.value = err.message
   }
 }
-</script>
-
-<style scoped>
-.login-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-}
-.form-group {
-  margin-bottom: 15px;
-}
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-button {
-  width: 100%;
-  padding: 10px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-.error {
-  color: red;
-  margin-top: 10px;
-}
-.message {
-  color: #2196F3;
-  margin-top: 10px;
-}
-.links {
-  margin-top: 15px;
-  text-align: center;
-}
-.links a {
-  color: #4CAF50;
-  text-decoration: none;
-  margin: 0 5px;
-}
-</style> 
+</script> 

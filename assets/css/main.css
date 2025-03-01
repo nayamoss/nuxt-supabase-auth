@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 15 77% 49%;
+    --primary-hex: DD4D1C;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.5rem;
+    
+    --form-input-bg: 0 0% 96.1%;
+    --form-input-hover-bg: 0 0% 92.5%;
+    --form-label-color: 240 5.9% 10%;
+    --success: 142.1 76.2% 36.3%;
+    --btn-secondary-bg: 240 5.9% 94.5%;
+    --btn-secondary-hover-bg: 240 4.9% 93.9%;
+    --btn-secondary-text: 240 5.9% 10%;
+    --card-border: 240 5.9% 90%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 15 77% 49%;
+    --primary-hex: DD4D1C;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    
+    --form-input-bg: 240 3.7% 15.9%;
+    --form-input-hover-bg: 240 5% 26%;
+    --form-label-color: 0 0% 98%;
+    --success: 142.1 70.6% 45.3%;
+    --btn-secondary-bg: 240 3.7% 15.9%;
+    --btn-secondary-hover-bg: 240 5% 26%;
+    --btn-secondary-text: 0 0% 98%;
+    --card-border: 240 3.7% 15.9%;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(55, 53, 47, 0.16);
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(55, 53, 47, 0.24);
+}
+
+@layer components {
+  /* Form Styles */
+  .form-input {
+    @apply w-full px-3 py-2 text-sm bg-[hsl(var(--form-input-bg))] border-0 rounded-md focus:outline-none focus:ring-0 transition-colors;
+  }
+
+  .form-input:hover:not(:disabled) {
+    @apply bg-[hsl(var(--form-input-hover-bg))];
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-[hsl(var(--form-label-color))] mb-1;
+  }
+
+  .form-error {
+    @apply text-destructive text-sm;
+  }
+
+  .form-success {
+    @apply text-[hsl(var(--success))] text-sm;
+  }
+
+  /* Button Styles */
+  .btn {
+    @apply px-4 py-2 text-sm font-medium rounded-[5px] transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-[hsl(var(--btn-secondary-bg))] text-[hsl(var(--btn-secondary-text))] hover:bg-[hsl(var(--btn-secondary-hover-bg))];
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-card rounded-[5px] border border-[hsl(var(--card-border))];
+  }
+} 
